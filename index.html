@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hormone Story Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Hormone Story Demo</h1>
+    <p class="lead">Paste a short story (1–3 sentences). Choose a hormone and transform the phrasing to emphasize that emotional style. This is a local client-side demo (no external AI required).</p>
+
+    <form id="form">
+      <label>Story (1–3 sentences)
+        <textarea id="story" rows="4" placeholder="Enter a short story...">Sam found an old key in the attic and wondered what it opened.</textarea>
+      </label>
+
+      <label>Target hormone
+        <select id="hormone">
+          <option value="oxytocin">Oxytocin (bonding)</option>
+          <option value="dopamine">Dopamine (anticipation)</option>
+          <option value="adrenaline">Adrenaline (urgency)</option>
+          <option value="serotonin">Serotonin (calm)</option>
+          <option value="endorphin">Endorphin (playful)</option>
+        </select>
+      </label>
+
+      <div class="consent">
+        <input id="consent" type="checkbox" />
+        <label for="consent">I consent to having this story rephrased for demonstration purposes.</label>
+      </div>
+
+      <div class="row">
+        <button id="transformBtn" type="submit">Transform</button>
+        <div class="samples">
+          <button id="sample1" type="button">Sample 1</button>
+          <button id="sample2" type="button">Sample 2</button>
+          <button id="sample3" type="button">Sample 3</button>
+        </div>
+      </div>
+
+      <div id="error" class="error" role="alert" aria-live="polite"></div>
+    </form>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <h2>Transformed</h2>
+      <div id="output" class="output"></div>
+      <div class="actions">
+        <button id="copyBtn">Copy</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+      <div class="note">This page uses simple heuristic rules to illustrate the idea. For higher-quality, factual-preserving rephrasing you can connect a secure LLM backend later.</div>
+    </section>
+
+    <footer>
+      <small>Client-side demo • No external APIs • Safe-by-default</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
