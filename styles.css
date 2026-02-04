@@ -1,19 +1,19 @@
 /* Modern minimal theme — edit variables below to customize quickly */
 
 :root{
-  --bg: linear-gradient(180deg,#071021 0%, #06121b 100%);
-  --card: rgba(8,12,20,0.78);
-  --muted: #94a3b8;
-  --text: #e6eef8;
-  --accent: #60a5fa;
+  --bg: #f6f9fb;
+  --card: rgba(255,255,255,0.92);
+  --muted: #6b7280;
+  --text: #071426;
+  --accent: #2563eb;
   --accent-2: #7c3aed;
-  --danger: #ff7a7a;
-  --glass: rgba(255,255,255,0.03);
-  --radius: 12px;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 14px;
   --radius-sm: 8px;
-  --container-max-width: 980px;
-  --shadow-1: 0 8px 26px rgba(2,6,23,0.6);
-  --shadow-2: 0 3px 10px rgba(2,6,23,0.5);
+  --container-max-width: 940px;
+  --shadow-1: 0 6px 18px rgba(8,24,48,0.06);
+  --shadow-2: 0 2px 8px rgba(8,24,48,0.04);
   --space: 16px;
   --mono: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
