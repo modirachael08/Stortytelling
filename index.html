@@ -4,56 +4,93 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hormone Story Demo</title>
+
+  <!-- Optional: change fonts here -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="container">
-    <h1>Hormone Story Demo</h1>
-    <p class="lead">Paste a short story (1–3 sentences). Choose a hormone and transform the phrasing to emphasize that emotional style. This is a local client-side demo (no external AI required).</p>
-
-    <form id="form">
-      <label>Story (1–3 sentences)
-        <textarea id="story" rows="4" placeholder="Enter a short story...">Sam found an old key in the attic and wondered what it opened.</textarea>
-      </label>
-
-      <label>Target hormone
-        <select id="hormone">
-          <option value="oxytocin">Oxytocin (bonding)</option>
-          <option value="dopamine">Dopamine (anticipation)</option>
-          <option value="adrenaline">Adrenaline (urgency)</option>
-          <option value="serotonin">Serotonin (calm)</option>
-          <option value="endorphin">Endorphin (playful)</option>
-        </select>
-      </label>
-
-      <div class="consent">
-        <input id="consent" type="checkbox" />
-        <label for="consent">I consent to having this story rephrased for demonstration purposes.</label>
-      </div>
-
-      <div class="row">
-        <button id="transformBtn" type="submit">Transform</button>
-        <div class="samples">
-          <button id="sample1" type="button">Sample 1</button>
-          <button id="sample2" type="button">Sample 2</button>
-          <button id="sample3" type="button">Sample 3</button>
+  <main class="page">
+    <header class="header">
+      <div class="brand">
+        <svg class="logo" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor" opacity="0.12"/>
+          <path d="M7 12c1-2 3-3 5-3s4 1 5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 16c1-1 3-1 3-1s2 0 3 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <h1>Hormone Story</h1>
+          <p class="tag">Phrase stories to emphasize emotional styles</p>
         </div>
       </div>
+      <nav class="nav">
+        <a class="cta" href="https://github.com/">View on GitHub</a>
+      </nav>
+    </header>
 
-      <div id="error" class="error" role="alert" aria-live="polite"></div>
-    </form>
+    <section class="card">
+      <form id="form" class="form">
+        <div class="form-grid">
+          <label class="field">
+            <span class="label">Story (1–3 sentences)</span>
+            <textarea id="story" rows="4" class="textarea" aria-label="Story input">Sam found an old key in the attic and wondered what it opened.</textarea>
+          </label>
 
-    <section id="result" class="result hidden" aria-live="polite">
-      <h2>Transformed</h2>
-      <div id="output" class="output"></div>
-      <div class="actions">
-        <button id="copyBtn">Copy</button>
-        <button id="resetBtn">Reset</button>
-      </div>
-      <div class="note">This page uses simple heuristic rules to illustrate the idea. For higher-quality, factual-preserving rephrasing you can connect a secure LLM backend later.</div>
+          <div class="controls">
+            <label class="field small">
+              <span class="label">Target hormone</span>
+              <select id="hormone" class="select" aria-label="Select hormone">
+                <option value="oxytocin">Oxytocin (bonding)</option>
+                <option value="dopamine">Dopamine (anticipation)</option>
+                <option value="adrenaline">Adrenaline (urgency)</option>
+                <option value="serotonin">Serotonin (calm)</option>
+                <option value="endorphin">Endorphin (playful)</option>
+              </select>
+            </label>
+
+            <div class="consent">
+              <input id="consent" type="checkbox" />
+              <label for="consent" class="consent-label">I consent to rephrasing this story for demo purposes.</label>
+            </div>
+
+            <div class="actions-row">
+              <button id="transformBtn" class="btn primary" type="submit">Transform</button>
+
+              <div class="samples" aria-hidden="false">
+                <button id="sample1" type="button" class="chip">Sample 1</button>
+                <button id="sample2" type="button" class="chip">Sample 2</button>
+                <button id="sample3" type="button" class="chip">Sample 3</button>
+              </div>
+            </div>
+
+            <div id="error" class="error" role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+      </form>
+
+      <aside id="result" class="result hidden" aria-live="polite">
+        <div class="result-header">
+          <h2 class="result-title">Transformed</h2>
+          <div class="result-actions">
+            <button id="copyBtn" class="icon-btn" title="Copy result" aria-label="Copy result">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 9H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button id="resetBtn" class="icon-btn" title="Reset" aria-label="Reset result">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 0-2.6 6.1L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="output" class="output"></div>
+
+        <div class="result-note">
+          <small>This is a client-side demo using simple heuristics. For higher-quality rewriting, connect a secure LLM backend.</small>
+        </div>
+      </aside>
     </section>
 
-    <footer>
+    <footer class="footer">
       <small>Client-side demo • No external APIs • Safe-by-default</small>
     </footer>
   </main>
